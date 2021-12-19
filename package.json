@@ -6,8 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-		"prepare": "husky install",
-		"cm": "cz"
+    "prepare": "husky install",
+    "cm": "cz"
   },
   "dependencies": {
     "@commitlint/cli": "^15.0.0",
@@ -30,9 +30,9 @@
     "eslint-config-next": "12.0.7",
     "typescript": "4.5.4"
   },
-	"config": {
+  "config": {
     "commitizen": {
       "path": "cz-customizable"
     }
-	}
+  }
 }
