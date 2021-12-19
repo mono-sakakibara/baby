@@ -17,6 +17,10 @@ import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
+import type { GetServerSideProps } from 'next'
+import { Login } from '../components/modules/Login'
+import { WebPlayback } from '../components/modules/index'
+
 function Copyright() {
   return (
     <Typography variant='body2' color='text.secondary' align='center'>
@@ -34,7 +38,11 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const theme = createTheme()
 
-const Home: NextPage = () => {
+type Props = {
+  token: string
+}
+
+const Home: NextPage<Props> = ({ token }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -47,6 +55,7 @@ const Home: NextPage = () => {
         </Toolbar>
       </AppBar>
       <main>
+        {token === '' ? <Login /> : <WebPlayback token={token} />}
         {/* Hero unit */}
         <Box
           sx={{
@@ -146,6 +155,19 @@ const Home: NextPage = () => {
       {/* End footer */}
     </ThemeProvider>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (context.req.cookies['spotify-token']) {
+    const token: string = context.req.cookies['spotify-token']
+    return {
+      props: { token: token },
+    }
+  } else {
+    return {
+      props: { token: '' },
+    }
+  }
 }
 
 export default Home
