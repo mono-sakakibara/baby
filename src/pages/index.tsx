@@ -11,9 +11,30 @@ import {
   Login,
   WebPlayback,
 } from 'components/modules'
+import Box from '@mui/material/Box'
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+const cards = [
+  {
+    captureSrc: 'contents_01.png',
+    captureAlt: '',
+    title: '友人のサイト制作',
+    desc: (
+      <>
+        使用技術
+        <br />
+        フレームワーク:Next.js
+        <br />
+        css:styled-components, tailwindCSS
+        <br />
+        js:typescript
+        <br />
+        deploy:vercel
+      </>
+    ),
+    hpHref: 'https://k-takeuchi-test.vercel.app/',
+    gitHref: 'https://github.com/mono-sakakibara/k-takeuchi-renew/',
+  },
+]
 const theme = createTheme()
 
 type Props = {
@@ -46,16 +67,12 @@ const Home: NextPage<Props> = ({ token }) => {
         </Container>
         {/* End Spotify Web Playback */}
 
-        {/* Hero unit */}
-        <Hero />
-        {/* End hero unit */}
-
         {/* Contents Area */}
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <RichCard />
+            {cards.map((card, i) => (
+              <Grid item key={i} xs={12} sm={6} md={4}>
+                <RichCard {...card} />
               </Grid>
             ))}
           </Grid>

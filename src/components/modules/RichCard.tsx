@@ -6,8 +6,26 @@ import {
   Button,
 } from '@mui/material'
 import Card from '@mui/material/Card'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import Image from 'next/image'
 
-export const RichCard: React.FC = () => {
+interface Props {
+  captureSrc: string
+  captureAlt?: string
+  title: string | JSX.Element
+  desc: string | JSX.Element
+  hpHref: string
+  gitHref?: string
+}
+
+export const RichCard: React.FC<Props> = ({
+  captureSrc,
+  captureAlt,
+  title,
+  desc,
+  hpHref,
+  gitHref,
+}) => {
   return (
     <Card
       sx={{
@@ -18,27 +36,43 @@ export const RichCard: React.FC = () => {
     >
       <CardMedia
         component='img'
-        sx={
-          {
-            // 16:9
-            // pt: '56.25%',
-          }
-        }
-        image='https://source.unsplash.com/random'
-        alt='random'
+        image={captureSrc}
+        alt={captureAlt}
+        sx={{ maxHeight: '300px', objectFit: 'contain' }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant='h5' component='h2'>
-          Heading
+          {title}
         </Typography>
-        <Typography>
-          This is a media card. You can use this section to describe the
-          content.
-        </Typography>
+        <Typography>{desc}</Typography>
       </CardContent>
       <CardActions>
-        <Button size='small'>View</Button>
-        <Button size='small'>Edit</Button>
+        <Button
+          size='small'
+          href={hpHref}
+          target='_blank'
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
+          <OpenInNewIcon />
+          <Typography sx={{ marginLeft: '10px' }}>view</Typography>
+        </Button>
+        {gitHref && (
+          <Button
+            size='small'
+            href={gitHref}
+            target='_blank'
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <Image
+              src='/GitHub-Mark-32px.png'
+              alt=''
+              width='24px'
+              height='24px'
+              loading='lazy'
+            />
+            <Typography sx={{ marginLeft: '10px' }}>repository</Typography>
+          </Button>
+        )}
       </CardActions>
     </Card>
   )
