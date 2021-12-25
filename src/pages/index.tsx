@@ -26,6 +26,20 @@ const Home: NextPage<Props> = ({ token }) => {
       <CssBaseline />
       <Header />
       <main>
+        {/* Hero unit */}
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth='sm' component={'section'}>
+            <Hero />
+          </Container>
+        </Box>
+        {/* End hero unit */}
+
         {/* Spotify Web Playback */}
         {token === '' ? <Login /> : <WebPlayback token={token} />}
         {/* End Spotify Web Playback */}
