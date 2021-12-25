@@ -1,4 +1,15 @@
 import { VFC, useState, useEffect } from 'react'
+import { useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import PauseIcon from '@mui/icons-material/Pause'
+import SkipNextIcon from '@mui/icons-material/SkipNext'
 
 type Props = {
   token: string
@@ -9,6 +20,7 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
   const [is_active, setActive] = useState<boolean>(false)
   const [player, setPlayer] = useState<Spotify.Player | null>(null)
   const [current_track, setTrack] = useState<Spotify.Track | null>(null)
+  const theme = useTheme()
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -70,65 +82,92 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
   } else if (!is_active) {
     return (
       <>
-        <div className='container'>
-          <div className='main-wrapper'>
-            <b>
-              Instance not active. Transfer your playback using your Spotify app
-            </b>
-          </div>
-        </div>
+        <Typography
+          variant='h5'
+          align='center'
+          color='text.secondary'
+          paragraph
+        >
+          DJはいま、お休み中です。
+        </Typography>
       </>
     )
   } else {
     return (
       <>
-        <div className='container'>
-          <div className='main-wrapper'>
-            <div className=''></div>
-            {current_track && current_track.album.images[0].url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={current_track.album.images[0].url}
-                className='now-playing__cover'
-                alt=''
-              />
-            ) : null}
-
-            <div className='now-playing__side'>
-              <div className='now-playing__name'>{current_track?.name}</div>
-              <div className='now-playing__artist'>
+        <Card sx={{ display: 'flex' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Typography component='div' variant='h5'>
+                {current_track?.name}
+              </Typography>
+              <Typography
+                variant='subtitle1'
+                color='text.secondary'
+                component='div'
+              >
                 {current_track?.artists[0].name}
-              </div>
-
-              <button
-                className='btn-spotify'
-                onClick={() => {
-                  player.previousTrack()
-                }}
-              >
-                &lt;&lt;
-              </button>
-
-              <button
-                className='btn-spotify'
-                onClick={() => {
-                  player.togglePlay()
-                }}
-              >
-                {is_paused ? 'PLAY' : 'PAUSE'}
-              </button>
-
-              <button
-                className='btn-spotify'
-                onClick={() => {
-                  player.nextTrack()
-                }}
-              >
-                &gt;&gt;
-              </button>
-            </div>
-          </div>
-        </div>
+              </Typography>
+            </CardContent>
+            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+              <IconButton aria-label='previous'>
+                {theme.direction === 'rtl' ? (
+                  <SkipNextIcon
+                    onClick={() => {
+                      player.nextTrack()
+                    }}
+                  />
+                ) : (
+                  <SkipPreviousIcon
+                    onClick={() => {
+                      player.previousTrack()
+                    }}
+                  />
+                )}
+              </IconButton>
+              <IconButton aria-label='play/pause'>
+                {is_paused ? (
+                  <PlayArrowIcon
+                    onClick={() => {
+                      player.togglePlay()
+                    }}
+                    sx={{ height: 38, width: 38 }}
+                  />
+                ) : (
+                  <PauseIcon
+                    onClick={() => {
+                      player.togglePlay()
+                    }}
+                    sx={{ height: 38, width: 38 }}
+                  />
+                )}
+              </IconButton>
+              <IconButton aria-label='next'>
+                {theme.direction === 'rtl' ? (
+                  <SkipPreviousIcon
+                    onClick={() => {
+                      player.previousTrack()
+                    }}
+                  />
+                ) : (
+                  <SkipNextIcon
+                    onClick={() => {
+                      player.nextTrack()
+                    }}
+                  />
+                )}
+              </IconButton>
+            </Box>
+          </Box>
+          {current_track && current_track.album.images[0].url ? (
+            <CardMedia
+              component='img'
+              sx={{ width: 151 }}
+              image={current_track.album.images[0].url}
+              alt={`曲名${current_track?.artists[0].name}アーティスト名${current_track?.name}`}
+            />
+          ) : null}
+        </Card>
       </>
     )
   }
