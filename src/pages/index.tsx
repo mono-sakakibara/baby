@@ -41,7 +41,9 @@ const Home: NextPage<Props> = ({ token }) => {
         {/* End hero unit */}
 
         {/* Spotify Web Playback */}
-        {token === '' ? <Login /> : <WebPlayback token={token} />}
+        <Container sx={{ py: 8 }} maxWidth='md'>
+          {token === '' ? <Login /> : <WebPlayback token={token} />}
+        </Container>
         {/* End Spotify Web Playback */}
 
         {/* Hero unit */}
