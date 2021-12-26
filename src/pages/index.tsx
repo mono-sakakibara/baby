@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import {
-  Header,
+  // Header,
   Footer,
   Hero,
   RichCard,
@@ -65,7 +65,7 @@ const Home: NextPage<Props> = ({ token }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
+      {/* <Header /> */}
       <main>
         {/* Hero unit */}
         <Box
