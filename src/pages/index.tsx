@@ -15,24 +15,44 @@ import Box from '@mui/material/Box'
 
 const cards = [
   {
+    title: '友人のサイト制作',
     captureSrc: 'contents_01.png',
     captureAlt: '',
-    title: '友人のサイト制作',
+    productHref: 'https://k-takeuchi-test.vercel.app/',
+    portfolio: {
+      desc: {
+        framework: 'Next.js',
+        css: 'styled-components, tailwindCSS',
+        js: 'Typescript',
+        deploy: 'vercel',
+      },
+      gitHref: 'https://github.com/mono-sakakibara/k-takeuchi-renew/',
+    },
+  },
+  {
+    title: 'Furima',
+    captureSrc: 'furima-logo.png',
+    captureAlt: '',
+    productHref: 'https://furima-31998.herokuapp.com/',
+    portfolio: {
+      desc: {
+        framework: 'RubyonRails ',
+        css: 'pure',
+        js: 'pure',
+        deploy: 'heroku',
+      },
+      gitHref: 'https://github.com/mono-sakakibara/furima_31998',
+    },
     desc: (
       <>
-        使用技術
+        テックキャンプの卒業制作
         <br />
-        フレームワーク:Next.js
+        スタイルは雛形を使用。amazon
+        S3から外してしまったため、現在画像が投稿できません。（すみません。。）
         <br />
-        css:styled-components, tailwindCSS
-        <br />
-        js:typescript
-        <br />
-        deploy:vercel
+        Basic認証 ID: admin Pass: 2222
       </>
     ),
-    hpHref: 'https://k-takeuchi-test.vercel.app/',
-    gitHref: 'https://github.com/mono-sakakibara/k-takeuchi-renew/',
   },
 ]
 const theme = createTheme()
@@ -71,7 +91,7 @@ const Home: NextPage<Props> = ({ token }) => {
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
             {cards.map((card, i) => (
-              <Grid item key={i} xs={12} sm={6} md={4}>
+              <Grid item key={i} xs={12} sm={6} md={6}>
                 <RichCard {...card} />
               </Grid>
             ))}
