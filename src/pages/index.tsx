@@ -3,6 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
 import {
   // Header,
   Footer,
@@ -11,7 +13,6 @@ import {
   Login,
   WebPlayback,
 } from 'components/modules'
-import Box from '@mui/material/Box'
 
 const cards = [
   {
@@ -83,7 +84,14 @@ const Home: NextPage<Props> = ({ token }) => {
 
         {/* Spotify Web Playback */}
         <Container sx={{ py: 8 }} maxWidth='md'>
-          {token === '' ? <Login /> : <WebPlayback token={token} />}
+          <Box sx={{ minWidth: 275 }}>
+            <Card
+              // variant='outlined'
+              sx={{ display: 'grid', placeItems: 'center', minHeight: '300px' }}
+            >
+              {token === '' ? <Login /> : <WebPlayback token={token} />}
+            </Card>
+          </Box>
         </Container>
         {/* End Spotify Web Playback */}
 
