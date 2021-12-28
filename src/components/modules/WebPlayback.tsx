@@ -89,13 +89,23 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
           paragraph
         >
           DJはいま、お休み中です。
+          <br />
+          Spotifyアプリより、 Web Playback SDKに接続ください。
         </Typography>
       </>
     )
   } else {
     return (
       <>
-        <Card sx={{ display: 'flex' }}>
+        <Box component='div' sx={{ display: 'flex', flexDirection: 'column' }}>
+          {current_track && current_track.album.images[0].url ? (
+            <CardMedia
+              component='img'
+              sx={{ width: '100%' }}
+              image={current_track.album.images[0].url}
+              alt={`曲名${current_track?.artists[0].name}アーティスト名${current_track?.name}`}
+            />
+          ) : null}
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <CardContent sx={{ flex: '1 0 auto' }}>
               <Typography component='div' variant='h5'>
@@ -109,7 +119,15 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
                 {current_track?.artists[0].name}
               </Typography>
             </CardContent>
-            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pl: 1,
+                pb: 1,
+              }}
+            >
               <IconButton aria-label='previous'>
                 {theme.direction === 'rtl' ? (
                   <SkipNextIcon
@@ -159,15 +177,7 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
               </IconButton>
             </Box>
           </Box>
-          {current_track && current_track.album.images[0].url ? (
-            <CardMedia
-              component='img'
-              sx={{ width: 151 }}
-              image={current_track.album.images[0].url}
-              alt={`曲名${current_track?.artists[0].name}アーティスト名${current_track?.name}`}
-            />
-          ) : null}
-        </Card>
+        </Box>
       </>
     )
   }
