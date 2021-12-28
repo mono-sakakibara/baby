@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { serialize, CookieSerializeOptions } from 'cookie'
 import axios from 'axios'
@@ -28,8 +29,18 @@ export const setCookie = (
 }
 
 const callback = async (req: NextApiRequest, res: NextApiResponse) => {
+  let spotify_redirect_uri: string = ''
+  const CheckLocation = () => {
+    const location = useLocation().pathname
+    if (location == 'http://localhost:3000') {
+      spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
+    } else {
+      spotify_redirect_uri = 'https://baby-two.vercel.app/api/auth/callback'
+    }
+  }
+  CheckLocation()
+
   const code = req.query.code
-  const spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
 
   let spotify_client_id: string = ''
   if (process.env.SPOTIFY_CLIENT_ID) {
