@@ -29,16 +29,12 @@ export const setCookie = (
 }
 
 const callback = async (req: NextApiRequest, res: NextApiResponse) => {
-  let spotify_redirect_uri: string = ''
-  const CheckLocation = () => {
-    const location = useLocation().pathname
-    if (location == 'http://localhost:3000') {
-      spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
-    } else {
-      spotify_redirect_uri = 'https://baby-two.vercel.app/api/auth/callback'
-    }
+  let spotify_redirect_uri = ''
+  if (process.env.NODE_ENV == 'development') {
+    spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
+  } else if (process.env.NODE_ENV == 'production') {
+    spotify_redirect_uri = 'https://baby-two.vercel.app/api/auth/callback'
   }
-  CheckLocation()
 
   const code = req.query.code
 

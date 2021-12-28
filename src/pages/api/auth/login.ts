@@ -15,16 +15,12 @@ const generateRandomString = (length: number): string => {
 const login = (req: NextApiRequest, res: NextApiResponse) => {
   const scope: string = 'streaming user-read-email user-read-private'
 
-  let spotify_redirect_uri: string = ''
-  const CheckLocation = () => {
-    const location = useLocation().pathname
-    if (location == 'http://localhost:3000') {
-      spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
-    } else {
-      spotify_redirect_uri = 'https://baby-two.vercel.app/api/auth/callback'
-    }
+  let spotify_redirect_uri = ''
+  if (process.env.NODE_ENV == 'development') {
+    spotify_redirect_uri = 'http://localhost:3000/api/auth/callback'
+  } else if (process.env.NODE_ENV == 'production') {
+    spotify_redirect_uri = 'https://baby-two.vercel.app/api/auth/callback'
   }
-  CheckLocation()
 
   const state: string = generateRandomString(16)
 
