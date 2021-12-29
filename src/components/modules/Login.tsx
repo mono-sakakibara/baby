@@ -12,7 +12,11 @@ export const Login: VFC = () => {
     <>
       <CardContent>
         <Typography sx={{ textAlign: 'center' }} variant='h4' component='h2'>
+          自分の曲を流したい！
+          <br />
           Spotifyアカウント（プレミアム）をお持ちの方。
+          <br />
+          スマホと連携して、PCから流せます。
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'center' }}>
