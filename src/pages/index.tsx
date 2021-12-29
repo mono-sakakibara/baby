@@ -82,11 +82,24 @@ const Home: NextPage<Props> = ({ token }) => {
         </Box>
         {/* End hero unit */}
 
+        {/* anchor */}
+        <Container sx={{ py: 8 }} maxWidth='md'>
+          <Box sx={{ minWidth: 275 }}>
+            <iframe
+              src='https://open.spotify.com/embed/episode/0kNcejULVd0xzJFgzlWRHE?utm_source=generator'
+              width='100%'
+              height='232'
+              frameBorder='0'
+              allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+            ></iframe>
+          </Box>
+        </Container>
+        {/* End anchor */}
+
         {/* Spotify Web Playback */}
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Box sx={{ minWidth: 275 }}>
             <Card
-              // variant='outlined'
               sx={{ display: 'grid', placeItems: 'center', minHeight: '300px' }}
             >
               {token === '' ? <Login /> : <WebPlayback token={token} />}
