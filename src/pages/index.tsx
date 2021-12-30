@@ -5,6 +5,8 @@ import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
+import Carousel from 'react-material-ui-carousel'
+
 import {
   // Header,
   Footer,
@@ -13,6 +15,7 @@ import {
   Login,
   WebPlayback,
 } from 'components/modules'
+import { Typography } from '@mui/material'
 
 const cards = [
   {
@@ -85,13 +88,61 @@ const Home: NextPage<Props> = ({ token }) => {
         {/* anchor */}
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Box sx={{ minWidth: 275 }}>
-            <iframe
-              src='https://open.spotify.com/embed/episode/0kNcejULVd0xzJFgzlWRHE?utm_source=generator'
-              width='100%'
-              height='232'
-              frameBorder='0'
-              allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-            ></iframe>
+            <Carousel
+              autoPlay={false}
+              indicators={true}
+              navButtonsAlwaysInvisible={true}
+              IndicatorIcon={[
+                <>
+                  <Typography
+                    component='span'
+                    // variant='h1'
+                    // align='center'
+                    color='text.primary'
+                    sx={{}}
+                  >
+                    昨日の一曲
+                  </Typography>
+                </>,
+                <>
+                  <Typography
+                    component='span'
+                    // variant='h1'
+                    // align='center'
+                    color='text.primary'
+                    sx={{}}
+                  >
+                    今日の一曲
+                  </Typography>
+                </>,
+              ]}
+              indicatorIconButtonProps={{
+                style: {
+                  borderRadius: 'unset',
+                  margin: '0 30px',
+                },
+              }}
+              activeIndicatorIconButtonProps={{
+                style: {
+                  backgroundColor: 'rgba(25, 118, 210, 0.04)',
+                },
+              }}
+            >
+              <iframe
+                src='https://open.spotify.com/embed/episode/0kNcejULVd0xzJFgzlWRHE?utm_source=generator'
+                width='100%'
+                height='232'
+                frameBorder='0'
+                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+              ></iframe>
+              <iframe
+                src='https://open.spotify.com/embed/episode/0kNcejULVd0xzJFgzlWRHE?utm_source=generator'
+                width='100%'
+                height='232'
+                frameBorder='0'
+                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+              ></iframe>
+            </Carousel>
           </Box>
         </Container>
         {/* End anchor */}
