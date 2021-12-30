@@ -19,5 +19,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## spotify
 
-- dash bord
+- dash board
   https://developer.spotify.com/dashboard/applications
+  https://anchor.fm/dashboard
