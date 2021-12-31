@@ -8,6 +8,10 @@ module.exports = {
       name: '💄 style:\tAdd or update styles, ui or ux',
     },
     {
+      value: ':musical_note_emoji : add',
+      name: '🎵 add:\tAdd or update contents, ui or ux',
+    },
+    {
       value: ':recycle: refactor',
       name: '♻️ refactor:\tCode change that neither fixes a bug nor adds a feature',
     },
