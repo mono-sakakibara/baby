@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { useLocation } from 'react-router-dom'
 
 const generateRandomString = (length: number): string => {
   let text = ''

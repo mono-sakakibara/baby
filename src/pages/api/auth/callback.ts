@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { serialize, CookieSerializeOptions } from 'cookie'
 import axios from 'axios'
