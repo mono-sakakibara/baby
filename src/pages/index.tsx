@@ -136,7 +136,7 @@ const Home: NextPage<Props> = ({ token }) => {
                 allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
               ></iframe>
               <iframe
-                src='https://open.spotify.com/embed/episode/0kNcejULVd0xzJFgzlWRHE?utm_source=generator'
+                src='https://open.spotify.com/embed/show/0Xwe0k0GG5QoaqrDX86fTs?utm_source=generator'
                 width='100%'
                 height='232'
                 frameBorder='0'
