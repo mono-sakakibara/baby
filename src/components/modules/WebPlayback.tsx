@@ -31,9 +31,7 @@ export const WebPlayback: VFC<Props> = ({ token }) => {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: 'Web Playback SDK',
-        getOAuthToken: (cb) => {
-          cb(token)
-        },
+        getOAuthToken: (cb) => cb(token),
         volume: 0.5,
       })
 

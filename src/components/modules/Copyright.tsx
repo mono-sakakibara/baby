@@ -7,9 +7,8 @@ export function Copyright() {
       {'Copyright © '}
       <Link color='inherit' href='https://mui.com/'>
         BABY
-      </Link>{' '}
+      </Link>
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   )
 }
