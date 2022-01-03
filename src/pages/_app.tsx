@@ -2,6 +2,16 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import {
+  // Header,
+  Footer,
+} from 'components/modules'
+
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+
+const theme = createTheme()
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -10,7 +20,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='description' content='榊原太郎のポートフォリオです。' />
         <link rel='icon' href='/favicon.png' />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {/* <Header /> */}
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </>
   )
 }

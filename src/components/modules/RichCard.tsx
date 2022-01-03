@@ -8,40 +8,54 @@ import {
 import Card from '@mui/material/Card'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import Image from 'next/image'
-
 interface PortfolioProps {
+  type: 'portfolio'
   title: string | JSX.Element
   captureSrc: string
   captureAlt?: string
-  productHref: string
-  portfolio: {
-    desc: {
-      framework: string
-      css: string
-      js: string
-      deploy: string
-    }
-    gitHref?: string
+  href: string
+  stack: {
+    framework: string
+    css: string
+    js: string
+    deploy: string
   }
+  gitHref?: string
   desc?: string | JSX.Element
 }
 interface ServiceProps {
+  type: 'service'
   title: string | JSX.Element
   captureSrc: string
   captureAlt?: string
-  productHref: string
-  portfolio?: undefined
+  href: string
+  stack?: undefined
+  gitHref?: undefined
+  ArticleProps?: undefined
+  desc: string | JSX.Element
+}
+interface ArticleProps {
+  type: 'article'
+  title: string | JSX.Element
+  captureSrc: string
+  captureAlt?: string
+  href: string
+  stack?: undefined
+  gitHref?: undefined
+  ServiceProps?: undefined
   desc: string | JSX.Element
 }
 
-type Props = PortfolioProps | ServiceProps
+export type Props = PortfolioProps | ServiceProps | ArticleProps
 
 export const RichCard: React.FC<Props> = ({
+  type,
   title,
   captureSrc,
   captureAlt,
-  productHref,
-  portfolio,
+  href,
+  stack,
+  gitHref,
   desc,
 }) => {
   return (
@@ -64,17 +78,18 @@ export const RichCard: React.FC<Props> = ({
         </Typography>
         {desc && <Typography variant='subtitle1'>{desc}</Typography>}
         <div style={{ marginTop: '10px' }}>
-          {portfolio &&
-            Object.values(portfolio.desc).map((v, i) => (
+          {type === 'portfolio' &&
+            stack &&
+            Object.values(stack).map((v, i) => (
               <Typography key={i} sx={{ display: 'flex' }}>
                 <span style={{ flexShrink: '0', marginRight: '5px' }}>
-                  {Object.keys(portfolio.desc)[i] == 'framework'
+                  {Object.keys(stack)[i] == 'framework'
                     ? 'Framework:'
-                    : Object.keys(portfolio.desc)[i] == 'css'
+                    : Object.keys(stack)[i] == 'css'
                     ? 'Css:'
-                    : Object.keys(portfolio.desc)[i] == 'js'
+                    : Object.keys(stack)[i] == 'js'
                     ? 'Js:'
-                    : Object.keys(portfolio.desc)[i] == 'deploy'
+                    : Object.keys(stack)[i] == 'deploy'
                     ? 'Deploy:'
                     : null}
                 </span>
@@ -84,19 +99,26 @@ export const RichCard: React.FC<Props> = ({
         </div>
       </CardContent>
       <CardActions>
-        <Button
-          size='small'
-          href={productHref}
-          target='_blank'
-          sx={{ display: 'flex', alignItems: 'center' }}
-        >
-          <OpenInNewIcon />
-          <Typography sx={{ marginLeft: '10px' }}>view</Typography>
-        </Button>
-        {portfolio && portfolio?.gitHref && (
+        {type === 'portfolio' || type === 'service' ? (
           <Button
             size='small'
-            href={portfolio.gitHref}
+            href={href}
+            target='_blank'
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <OpenInNewIcon />
+            <Typography sx={{ marginLeft: '10px' }}>view</Typography>
+          </Button>
+        ) : null}
+        {type === 'article' && (
+          <Button size='small' href={href}>
+            <Typography sx={{ marginLeft: '10px' }}>view</Typography>
+          </Button>
+        )}
+        {type === 'portfolio' && gitHref && (
+          <Button
+            size='small'
+            href={gitHref}
             target='_blank'
             sx={{ display: 'flex', alignItems: 'center' }}
           >
