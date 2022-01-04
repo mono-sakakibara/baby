@@ -1,5 +1,7 @@
 import { Typography, Button } from '@mui/material'
 import Box from '@mui/material/Box'
+import GitHubIcon from '@mui/icons-material/GitHub'
+
 import Image from 'next/image'
 
 export const Hero: React.FC = () => {
@@ -21,13 +23,7 @@ export const Hero: React.FC = () => {
           target='_blank'
           sx={{ display: 'flex', alignItems: 'center' }}
         >
-          <Image
-            src='/GitHub-Mark-32px.png'
-            alt=''
-            width='24px'
-            height='24px'
-            loading='lazy'
-          />
+          <GitHubIcon />
           <Typography sx={{ marginLeft: '10px' }}>repository</Typography>
         </Button>
       </Box>
