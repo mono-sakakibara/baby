@@ -3,11 +3,17 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Button,
+  Chip,
+  Box,
+  Grid,
 } from '@mui/material'
 import Card from '@mui/material/Card'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import Image from 'next/image'
+import ArticleIcon from '@mui/icons-material/Article'
+import PaletteIcon from '@mui/icons-material/Palette'
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
+import GitHubIcon from '@mui/icons-material/GitHub'
+
 interface PortfolioProps {
   type: 'portfolio'
   title: string | JSX.Element
@@ -99,39 +105,65 @@ export const RichCard: React.FC<Props> = ({
         </div>
       </CardContent>
       <CardActions>
-        {type === 'portfolio' || type === 'service' ? (
-          <Button
+        <Grid
+          container
+          direction='row'
+          justifyContent='space-between'
+          alignItems='center'
+        >
+          <Chip
+            label={type}
+            variant='outlined'
             size='small'
-            href={href}
-            target='_blank'
-            sx={{ display: 'flex', alignItems: 'center' }}
-          >
-            <OpenInNewIcon />
-            <Typography sx={{ marginLeft: '10px' }}>view</Typography>
-          </Button>
-        ) : null}
-        {type === 'article' && (
-          <Button size='small' href={href}>
-            <Typography sx={{ marginLeft: '10px' }}>view</Typography>
-          </Button>
-        )}
-        {type === 'portfolio' && gitHref && (
-          <Button
-            size='small'
-            href={gitHref}
-            target='_blank'
-            sx={{ display: 'flex', alignItems: 'center' }}
-          >
-            <Image
-              src='/GitHub-Mark-32px.png'
-              alt=''
-              width='24px'
-              height='24px'
-              loading='lazy'
-            />
-            <Typography sx={{ marginLeft: '10px' }}>repository</Typography>
-          </Button>
-        )}
+            icon={
+              type === 'article' ? (
+                <ArticleIcon />
+              ) : type === 'portfolio' ? (
+                <PaletteIcon />
+              ) : (
+                <RocketLaunchIcon />
+              )
+            }
+          />
+          <Box>
+            {type === 'portfolio' || type === 'service' ? (
+              <Chip
+                label='view'
+                component='a'
+                variant='outlined'
+                size='small'
+                href={href}
+                target='_blank'
+                icon={<OpenInNewIcon />}
+                color='info'
+              />
+            ) : null}
+            {type === 'article' && (
+              <Chip
+                label='view'
+                component='a'
+                variant='outlined'
+                size='small'
+                href={href}
+                target='_blank'
+                color='info'
+              />
+            )}
+            {type === 'portfolio' && gitHref && (
+              <Chip
+                label='repository'
+                component='a'
+                variant='outlined'
+                size='small'
+                href={gitHref}
+                target='_blank'
+                icon={<GitHubIcon />}
+                color='info'
+                sx={{ marginLeft: '10px' }}
+              />
+            )}
+          </Box>
+        </Grid>
       </CardActions>
     </Card>
   )
