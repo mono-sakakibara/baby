@@ -79,7 +79,12 @@ export const RichCard: React.FC<Props> = ({
         sx={{ height: '300px', objectFit: 'contain' }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant='h5' component='h2'>
+        <Typography
+          gutterBottom
+          variant='body1'
+          component='h2'
+          sx={{ fontWeight: 'bold' }}
+        >
           {title}
         </Typography>
         {desc && <Typography variant='subtitle1'>{desc}</Typography>}
