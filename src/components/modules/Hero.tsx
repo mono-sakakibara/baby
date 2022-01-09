@@ -15,7 +15,7 @@ export const Hero: React.FC = () => {
           color='text.primary'
           sx={{ fontWeight: '900' }}
         >
-          BABY
+          The Portfolio
         </Typography>
         <Button
           size='small'
