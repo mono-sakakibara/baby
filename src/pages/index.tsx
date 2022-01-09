@@ -93,24 +93,12 @@ const Home: NextPage<Props> = ({ token }) => {
             navButtonsAlwaysInvisible={true}
             IndicatorIcon={[
               <>
-                <Typography
-                  component='span'
-                  // variant='h1'
-                  // align='center'
-                  color='text.primary'
-                  sx={{}}
-                >
+                <Typography component='span' color='text.primary'>
                   昨日の一曲
                 </Typography>
               </>,
               <>
-                <Typography
-                  component='span'
-                  // variant='h1'
-                  // align='center'
-                  color='text.primary'
-                  sx={{}}
-                >
+                <Typography component='span' color='text.primary'>
                   今日の一曲
                 </Typography>
               </>,
@@ -147,7 +135,7 @@ const Home: NextPage<Props> = ({ token }) => {
       {/* End anchor */}
 
       {/* Spotify Web Playback */}
-      <Container sx={{ py: 8 }} maxWidth='md'>
+      <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
         <Box sx={{ minWidth: 275 }}>
           <Card
             sx={{ display: 'grid', placeItems: 'center', minHeight: '300px' }}
@@ -159,13 +147,19 @@ const Home: NextPage<Props> = ({ token }) => {
       {/* End Spotify Web Playback */}
 
       {/* Contents Area */}
-      <Container sx={{ py: 8 }} maxWidth='md'>
-        <Grid container spacing={4}>
-          {cards.map((card, i) => (
-            <Grid item key={i} xs={12} sm={6} md={6}>
-              <RichCard {...card} />
-            </Grid>
-          ))}
+      <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
+        <Grid container spacing={{ xs: 1, sm: 1, md: 4 }}>
+          {cards.map((card, i) =>
+            i % 3 == 0 || i == 0 ? (
+              <Grid item key={i} xs={12} sm={12} md={12}>
+                <RichCard {...card} />
+              </Grid>
+            ) : (
+              <Grid item key={i} xs={12} sm={12} md={6}>
+                <RichCard {...card} />
+              </Grid>
+            ),
+          )}
         </Grid>
       </Container>
       {/* End Contents Area */}
