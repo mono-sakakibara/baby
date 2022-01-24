@@ -25,6 +25,29 @@ import { fetchAPI } from './api/cms/api'
 
 const cards: RichCardProps[] = [
   {
+    type: 'portfolio',
+    title: '都市別人口グラフ SPA',
+    captureSrc: 'population.jpg',
+    captureAlt: '',
+    href: 'https://prefectural-population-graph.vercel.app/',
+    stack: {
+      framework: 'Preact + vite',
+      css: 'styled-components',
+      js: 'typescript',
+      deploy: 'vercel',
+    },
+    gitHref: 'https://github.com/mono-sakakibara/prefectural-population-graph',
+    desc: (
+      <>
+        コンポーネント再設計中
+        <br />
+        preact+viteの軽量環境での構築
+        <br />
+        コミット粒度や開発環境はチーム開発を意識しました。
+      </>
+    ),
+  },
+  {
     type: 'article',
     title: 'APIを叩きまくってみる',
     captureSrc: 'try_api_01.jpg',
