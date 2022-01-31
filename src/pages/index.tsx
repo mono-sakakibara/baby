@@ -1,27 +1,24 @@
 import type {
   NextPage,
-  GetStaticProps,
-  // GetServerSideProps
+  // GetStaticProps,
+  GetServerSideProps,
 } from 'next'
 
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-// import Card from '@mui/material/Card'
+import Card from '@mui/material/Card'
 import { Typography } from '@mui/material'
 
 import Carousel from 'react-material-ui-carousel'
 
-import {
-  Hero,
-  // Login, WebPlayback
-} from 'components/modules'
+import { Hero, Login, WebPlayback } from 'components/modules'
 import {
   RichCard,
   type Props as RichCardProps,
 } from 'components/modules/RichCard'
 
-import { fetchAPI } from './api/cms/api'
+// import { fetchAPI } from './api/cms/api'
 
 const cards: RichCardProps[] = [
   {
@@ -108,7 +105,7 @@ type Props = {
   }[]
 }
 
-const Home: NextPage<Props> = ({ podCastsData }) => {
+const Home: NextPage<Props> = ({ token }) => {
   return (
     <>
       {/* Hero unit */}
@@ -188,7 +185,7 @@ const Home: NextPage<Props> = ({ podCastsData }) => {
       {/* End anchor */}
 
       {/* Spotify Web Playback */}
-      {/* <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
+      <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
         <Box sx={{ minWidth: 275 }}>
           <Card
             sx={{ display: 'grid', placeItems: 'center', minHeight: '300px' }}
@@ -196,7 +193,7 @@ const Home: NextPage<Props> = ({ podCastsData }) => {
             {token === '' ? <Login /> : <WebPlayback token={token} />}
           </Card>
         </Box>
-      </Container> */}
+      </Container>
       {/* End Spotify Web Playback */}
 
       {/* Contents Area */}
@@ -220,26 +217,26 @@ const Home: NextPage<Props> = ({ podCastsData }) => {
   )
 }
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   if (context.req.cookies['spotify-token']) {
-//     const token: string = context.req.cookies['spotify-token']
-//     return {
-//       props: { token: token },
-//     }
-//   } else {
-//     return {
-//       props: { token: '' },
-//     }
-//   }
-// }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const podCasts = await Promise.all([fetchAPI('/api/pod-casts')])
-  const podCastsData = podCasts[0].data
-  return {
-    props: { podCastsData },
-    revalidate: 1,
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (context.req.cookies['spotify-token']) {
+    const token: string = context.req.cookies['spotify-token']
+    return {
+      props: { token: token },
+    }
+  } else {
+    return {
+      props: { token: '' },
+    }
   }
 }
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const podCasts = await Promise.all([fetchAPI('/api/pod-casts')])
+//   const podCastsData = podCasts[0].data
+//   return {
+//     props: { podCastsData },
+//     revalidate: 1,
+//   }
+// }
 
 export default Home

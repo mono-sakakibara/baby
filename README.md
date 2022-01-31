@@ -22,9 +22,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   - react での外部 api の呼び出し
     https://ja.reactjs.org/docs/hooks-effect.html<br/>
     https://gist.github.com/tagty/fbcae0998ad439017fd1ebd119393019
+- strapi 導入
+  https://strapi.io/blog/build-a-blog-with-next-react-js-strapi
 
 ## spotify
 
 - dash board
   https://developer.spotify.com/dashboard/applications
   https://anchor.fm/dashboard
+
+- strapi_local
+  http://localhost:1337/admin/plugins/content-type-builder/content-types/api::pod-cast.pod-cast
