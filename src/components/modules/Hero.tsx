@@ -2,8 +2,6 @@ import { Typography, Button } from '@mui/material'
 import Box from '@mui/material/Box'
 import GitHubIcon from '@mui/icons-material/GitHub'
 
-import Image from 'next/image'
-
 export const Hero: React.FC = () => {
   return (
     <>
@@ -15,7 +13,7 @@ export const Hero: React.FC = () => {
           color='text.primary'
           sx={{ fontWeight: '900' }}
         >
-          The Portfolio
+          Portfolio
         </Typography>
         <Button
           size='small'

@@ -17,14 +17,14 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 interface PortfolioProps {
   type: 'portfolio'
   title: string | JSX.Element
-  captureSrc: string
+  captureSrc?: string
   captureAlt?: string
   href: string
   stack: {
-    framework: string
-    css: string
-    js: string
-    deploy: string
+    framework?: string
+    css?: string
+    js?: string
+    deploy?: string
   }
   gitHref?: string
   desc?: string | JSX.Element
@@ -32,7 +32,7 @@ interface PortfolioProps {
 interface ServiceProps {
   type: 'service'
   title: string | JSX.Element
-  captureSrc: string
+  captureSrc?: string
   captureAlt?: string
   href: string
   stack?: undefined
@@ -43,7 +43,7 @@ interface ServiceProps {
 interface ArticleProps {
   type: 'article'
   title: string | JSX.Element
-  captureSrc: string
+  captureSrc?: string
   captureAlt?: string
   href: string
   stack?: undefined
@@ -72,12 +72,14 @@ export const RichCard: React.FC<Props> = ({
         flexDirection: 'column',
       }}
     >
-      <CardMedia
-        component='img'
-        image={captureSrc}
-        alt={captureAlt}
-        sx={{ height: '300px', objectFit: 'contain' }}
-      />
+      {captureSrc && (
+        <CardMedia
+          component='img'
+          image={captureSrc}
+          alt={captureAlt}
+          sx={{ height: '300px', objectFit: 'contain' }}
+        />
+      )}
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography
           gutterBottom
@@ -141,6 +143,7 @@ export const RichCard: React.FC<Props> = ({
                 target='_blank'
                 icon={<OpenInNewIcon />}
                 color='info'
+                clickable
               />
             ) : null}
             {type === 'article' && (
@@ -165,6 +168,7 @@ export const RichCard: React.FC<Props> = ({
                 icon={<GitHubIcon />}
                 color='info'
                 sx={{ marginLeft: '10px' }}
+                clickable
               />
             )}
           </Box>

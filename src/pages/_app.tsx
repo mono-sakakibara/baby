@@ -2,10 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import {
-  // Header,
-  Footer,
-} from 'components/modules'
+import { Header, Footer } from 'components/modules'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
