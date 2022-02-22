@@ -26,7 +26,7 @@
     "cookie": "^0.4.1",
     "cz-customizable": "^6.3.0",
     "husky": "^7.0.4",
-    "next": "12.0.7",
+    "next": "^12.0.9",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "react": "17.0.2",
