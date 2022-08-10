@@ -144,6 +144,18 @@ export default Home
 const privateCards: RichCardProps[] = [
   {
     type: 'portfolio',
+    title: 'NOT A HOTEL',
+    captureSrc: 'not-a-hotel.png',
+    captureAlt: '',
+    href: 'https://notahotel.com/nft',
+    stack: {
+      framework: 'Next.js',
+      css: 'styled-components',
+      js: 'TypeScript',
+    },
+  },
+  {
+    type: 'portfolio',
     title: 'toletta LP作成',
     captureSrc: 'toletta.png',
     captureAlt: '',
