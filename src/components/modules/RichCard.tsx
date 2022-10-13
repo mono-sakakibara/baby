@@ -95,7 +95,7 @@ export const RichCard: React.FC<Props> = ({
         </Typography>
         {desc && <Typography variant='subtitle1'>{desc}</Typography>}
         <div style={{ marginTop: '10px' }}>
-          <Typography>{date}</Typography>
+          <Typography>制作時期: {date}</Typography>
           {type === 'portfolio' &&
             stack &&
             Object.values(stack).map((v, i) => (
