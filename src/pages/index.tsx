@@ -63,7 +63,7 @@ const Home: NextPage<Props> = () => {
           )}
         </Grid>
       </Container>
-      <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
+      {/* <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
         <Typography
           component='h2'
           variant='h3'
@@ -81,7 +81,7 @@ const Home: NextPage<Props> = () => {
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Container> */}
     </>
   )
 }
@@ -100,6 +100,7 @@ const privateCards: RichCardProps[] = [
       css: 'styled-components',
       js: 'TypeScript',
     },
+    date: '2021/12~',
   },
   {
     type: 'portfolio',
@@ -112,6 +113,7 @@ const privateCards: RichCardProps[] = [
       css: 'Sass',
       js: 'JavaScript/ Gsap',
     },
+    date: '2021/8~',
   },
   {
     type: 'portfolio',
@@ -123,6 +125,7 @@ const privateCards: RichCardProps[] = [
       css: 'Sass',
       js: 'JavaScript/ Gsap',
     },
+    date: '2021/7~',
   },
   {
     type: 'portfolio',
@@ -137,6 +140,7 @@ const privateCards: RichCardProps[] = [
       deploy: 'vercel',
     },
     gitHref: 'https://github.com/mono-sakakibara/prefectural-population-graph',
+    date: '2021/9~',
   },
   {
     type: 'portfolio',
@@ -151,26 +155,27 @@ const privateCards: RichCardProps[] = [
       deploy: 'vercel',
     },
     gitHref: 'https://github.com/mono-sakakibara/k-takeuchi-renew/',
+    date: '2021/5~',
   },
 ]
 
-const companyCards: RichCardProps[] = [
-  {
-    type: 'portfolio',
-    title: '放送大学様 リニューアル案件',
-    href: 'https://www.ouj.ac.jp/kamoku/',
-    stack: {
-      framework: 'Next.js',
-      css: 'TailwindCSS/ Linaria',
-      js: 'TypeScript',
-    },
-  },
-  {
-    type: 'portfolio',
-    title: 'ユニバーサルホーム様 LP作成',
-    href: 'https://www.universalhome.co.jp/lifestyle/newlifestyle/',
-    stack: {
-      css: 'TailwindCSS',
-    },
-  },
-]
+// const companyCards: RichCardProps[] = [
+//   {
+//     type: 'portfolio',
+//     title: '放送大学様 リニューアル案件',
+//     href: 'https://www.ouj.ac.jp/kamoku/',
+//     stack: {
+//       framework: 'Next.js',
+//       css: 'TailwindCSS/ Linaria',
+//       js: 'TypeScript',
+//     },
+//   },
+//   {
+//     type: 'portfolio',
+//     title: 'ユニバーサルホーム様 LP作成',
+//     href: 'https://www.universalhome.co.jp/lifestyle/newlifestyle/',
+//     stack: {
+//       css: 'TailwindCSS',
+//     },
+//   },
+// ]

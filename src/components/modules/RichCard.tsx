@@ -28,6 +28,7 @@ interface PortfolioProps {
   }
   gitHref?: string
   desc?: string | JSX.Element
+  date: string
 }
 interface ServiceProps {
   type: 'service'
@@ -39,6 +40,7 @@ interface ServiceProps {
   gitHref?: undefined
   ArticleProps?: undefined
   desc: string | JSX.Element
+  date: string
 }
 interface ArticleProps {
   type: 'article'
@@ -50,6 +52,7 @@ interface ArticleProps {
   gitHref?: undefined
   ServiceProps?: undefined
   desc: string | JSX.Element
+  date: string
 }
 
 export type Props = PortfolioProps | ServiceProps | ArticleProps
@@ -63,6 +66,7 @@ export const RichCard: React.FC<Props> = ({
   stack,
   gitHref,
   desc,
+  date,
 }) => {
   return (
     <Card
@@ -91,6 +95,7 @@ export const RichCard: React.FC<Props> = ({
         </Typography>
         {desc && <Typography variant='subtitle1'>{desc}</Typography>}
         <div style={{ marginTop: '10px' }}>
+          <Typography>{date}</Typography>
           {type === 'portfolio' &&
             stack &&
             Object.values(stack).map((v, i) => (
