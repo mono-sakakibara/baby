@@ -15,15 +15,6 @@ export const Hero: React.FC = () => {
         >
           Portfolio
         </Typography>
-        <Button
-          size='small'
-          href='https://github.com/mono-sakakibara/baby'
-          target='_blank'
-          sx={{ display: 'flex', alignItems: 'center' }}
-        >
-          <GitHubIcon />
-          <Typography sx={{ marginLeft: '10px' }}>repository</Typography>
-        </Button>
       </Box>
     </>
   )

@@ -1,19 +1,10 @@
-import type {
-  NextPage,
-  // GetStaticProps,
-  GetServerSideProps,
-} from 'next'
+import type { NextPage } from 'next'
 
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-// import Card from '@mui/material/Card'
-// import { Typography } from '@mui/material'
 
-import {
-  Hero,
-  // Login, WebPlayback
-} from 'components/modules'
+import { Hero } from 'components/modules'
 import {
   RichCard,
   type Props as RichCardProps,
@@ -33,14 +24,9 @@ type Props = {
   }[]
 }
 
-const Home: NextPage<Props> = (
-  {
-    // token
-  },
-) => {
+const Home: NextPage<Props> = () => {
   return (
     <>
-      {/* Hero unit */}
       <Box
         sx={{
           bgcolor: 'background.paper',
@@ -52,29 +38,6 @@ const Home: NextPage<Props> = (
           <Hero />
         </Container>
       </Box>
-      {/* End hero unit */}
-
-      {/* anchor */}
-      {/* <Container sx={{ py: 8 }} maxWidth='md'>
-        <Box sx={{ minWidth: 275 }}>
-          <Carousel/>
-        </Box>
-      </Container> */}
-      {/* End anchor */}
-
-      {/* Spotify Web Playback */}
-      {/* <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
-        <Box sx={{ minWidth: 275 }}>
-          <Card
-            sx={{ display: 'grid', placeItems: 'center', minHeight: '300px' }}
-          >
-            {token === '' ? <Login /> : <WebPlayback token={token} />}
-          </Card>
-        </Box>
-      </Container> */}
-      {/* End Spotify Web Playback */}
-
-      {/* Contents Area */}
       <Container sx={{ py: 4, px: 1 }} maxWidth='md'>
         <Typography
           component='h2'
@@ -119,25 +82,9 @@ const Home: NextPage<Props> = (
           ))}
         </Grid>
       </Container>
-
-      {/* End Contents Area */}
     </>
   )
 }
-
-// Spotify Web Playback のトークン取得
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   if (context.req.cookies['spotify-token']) {
-//     const token: string = context.req.cookies['spotify-token']
-//     return {
-//       props: { token: token },
-//     }
-//   } else {
-//     return {
-//       props: { token: '' },
-//     }
-//   }
-// }
 
 export default Home
 
