@@ -1,5 +1,3 @@
-export { Login } from './Login'
-export { WebPlayback } from './WebPlayback'
 export { Copyright } from './Copyright'
 export { Header } from './Header'
 export { Footer } from './Footer'
